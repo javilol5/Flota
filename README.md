@@ -1,5 +1,7 @@
-# Flota
-    classDiagram
+
+```mermaid
+
+classDiagram
     class Barco {
         - nombre : str
         - longitud : int
@@ -9,8 +11,8 @@
         + esta_hundido() bool
         + mostrar_estado()
     }
----
-# Tablero
+
+
 
     class Tablero {
         - dimensiones : tuple
@@ -18,3 +20,5 @@
         + __init__(tamano)
         + mostrar_tablero()
     }
+
+```
