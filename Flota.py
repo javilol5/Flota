@@ -1,9 +1,9 @@
 
 class Tablero:
     def __init__(self, tamano):
-        """
+        '''
         tamano: entero que indica filas y columnas (tablero cuadrado)
-        """
+        '''
         self.dimensiones = (tamano, tamano)
         filas, columnas = self.dimensiones
 
