@@ -1,4 +1,4 @@
-from Flota import Barco
+from Barco import Barco
 from Flota import Tablero
 
 if __name__ == "__main__":
