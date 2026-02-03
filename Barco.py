@@ -17,3 +17,4 @@ class Barco:
         print(f"Golpes recibidos: {self.golpes_recibidos}")
         print(f"Estado: {estado}")
         print("-" * 30)
+        print('Increible aportacion muy bien aportada' + self.nombre)
