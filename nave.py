@@ -1,8 +1,8 @@
 class Nave:
 
-    def __init__(self, nombre, tamano, vida):
+    def __init__(self, nombre, tipo, vida):
         self.nombre = nombre
-        self.tamano = tamano
+        self.tipo = tipo
         self.vida = vida
 
     def recibir_disparo(self):
