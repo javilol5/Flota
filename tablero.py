@@ -43,5 +43,8 @@ class Tablero:
         print(f"[LOG] casillero[{x}][{y}] = {self.casillero[x][y]}")
         if self.casillero[x][y] is None:
             print("[LOG] Awa")
-        print(f"[LOG] {self.casillero[x][y].nombre} Tocado")
-        return self.AWA
+            return self.AWA
+        else:
+            print(f"[LOG] {self.casillero[x][y].nombre} Tocado")
+            self.casillero[x][y].recibir_disparo()
+            return self.TOCADO

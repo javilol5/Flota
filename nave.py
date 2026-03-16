@@ -9,6 +9,6 @@ class Nave:
         self.vida -= 1
 
         if self.vida > 0:
-            return self.TOCADO
+            return 1
         else:
-            return self.HUNDIDO
+            return 2
