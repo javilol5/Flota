@@ -12,3 +12,6 @@ class Nave:
             return 1
         else:
             return 2
+
+    def __str__(self):
+        return f"{self.nombre} {self.tipo} {self.vida}"

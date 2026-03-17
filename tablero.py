@@ -41,10 +41,16 @@ class Tablero:
     def comprobar_impacto(self, x, y):
         print(f"[LOG] estoy en tablero comprobando impacto ({x}, {y})")
         print(f"[LOG] casillero[{x}][{y}] = {self.casillero[x][y]}")
+
         if self.casillero[x][y] is None:
             print("[LOG] Awa")
             return self.AWA
         else:
-            print(f"[LOG] {self.casillero[x][y].nombre} Tocado")
-            self.casillero[x][y].recibir_disparo()
-            return self.TOCADO
+            resultado = self.casillero[x][y].recibir_disparo()
+
+            if resultado == self.HUNDIDO:
+                print(f"[LOG] {self.casillero[x][y].nombre} Hundido")
+            else:
+                print(f"[LOG] {self.casillero[x][y].nombre} Tocado {self.casillero[x][y].vida}")
+
+            return resultado

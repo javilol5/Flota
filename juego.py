@@ -5,7 +5,7 @@ from nave import Nave
 class Juego:
 
     def __init__(self):
-        pass
+        self.obj_tablero = Tablero()
 
 
     def inicializar_naves(self):
@@ -13,8 +13,7 @@ class Juego:
 
     def lanzar_ataque(self, x, y):
         print(f"Atacando a  {x}, {y} ")
-        obj_tablero = Tablero()
-        resultado = obj_tablero.comprobar_impacto(x, y)
+        resultado = self.obj_tablero.comprobar_impacto(x, y)
         self.mostrar_resultado(resultado)
 
     def mostrar_resultado(self, resultado):
@@ -31,5 +30,9 @@ if __name__ == "__main__":
     juego.lanzar_ataque(2, 3)
     juego.lanzar_ataque(2, 3)
     juego.lanzar_ataque(1, 1)
-    juego.lanzar_ataque(4, 0)
+    juego.lanzar_ataque(1, 2)
+    juego.lanzar_ataque(1, 3)
+    juego.lanzar_ataque(1, 4)
+    juego.lanzar_ataque(1, 5)
+    juego.lanzar_ataque(0, 4)
     juego.lanzar_ataque(7, 6)
