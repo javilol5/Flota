@@ -1,10 +1,9 @@
 from nave import Nave
-
+from casilla import Casilla
 class Tablero:
 
     def __init__(self, tamano = 10):
-        self.nave = None
-        self.tamano = 10
+        self.tamano = tamano
 
         self.AWA = 0
         self.TOCADO = 1
@@ -22,35 +21,60 @@ class Tablero:
         sub4 = Nave("U-534", "submarino", 1)
 
 
+        '''
         self.casillero = [
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, por1, por1, por1, por1, por1, None, None, None, None],
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, None, None, fra1, None, None, None, None, None, None],
-            [None, None, None, fra1, None, None, sub1, None, None, None],
-            [None, None, None, fra1, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, fra2, fra2, fra2, None, None, sub3, None, None, None],
-            [None, None, None, None, None, None, None, None, None, None],
-            [None, fra3, fra3, fra3, None, sub4, None, None, None, sub2]
+            [Casilla() for _ in range(tamano)]
+            for _ in range(tamano)
+        ]
+        '''
+
+
+        self.casillero = [
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
+            [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()]
         ]
 
-    def colocar_nave(self, nave):
-        pass
+        # portaaviones
+        self.casillero[1][1].nave = por1
+        self.casillero[1][2].nave = por1
+        self.casillero[1][3].nave = por1
+        self.casillero[1][4].nave = por1
+        self.casillero[1][5].nave = por1
+
+        # fragatas
+        self.casillero[3][3].nave = fra1
+        self.casillero[4][3].nave = fra1
+        self.casillero[5][3].nave = fra1
+
+        self.casillero[7][1].nave = fra2
+        self.casillero[7][2].nave = fra2
+        self.casillero[7][3].nave = fra2
+
+        self.casillero[9][1].nave = fra3
+        self.casillero[9][2].nave = fra3
+        self.casillero[9][3].nave = fra3
+
+        # submarinos
+        self.casillero[4][6].nave = sub1
+        self.casillero[9][9].nave = sub2
+        self.casillero[7][6].nave = sub3
+        self.casillero[9][5].nave = sub4
 
     def comprobar_impacto(self, x, y):
-        print(f"[LOG] estoy en tablero comprobando impacto ({x}, {y})")
-        print(f"[LOG] casillero[{x}][{y}] = {self.casillero[x][y]}")
+        print(f"[LOG] comprobando impacto ({x}, {y})")
 
-        if self.casillero[x][y] is None:
-            print("[LOG] Awa")
-            return self.AWA
-        else:
-            resultado = self.casillero[x][y].recibir_disparo()
+        casilla = self.casillero[x][y]
+        resultado = casilla.disparar()
 
-            if resultado == self.HUNDIDO:
-                print(f"[LOG] {self.casillero[x][y].nombre} Hundido")
-            else:
-                print(f"[LOG] {self.casillero[x][y].nombre} Tocado {self.casillero[x][y].vida}")
+        if resultado is None:
+            return self.AWA  # ya atacada
 
-            return resultado
+        return resultado
