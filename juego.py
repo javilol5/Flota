@@ -2,12 +2,18 @@ from tablero import Tablero
 
 
 class Juego:
-
+    """
+    Clase principal que controla el flujo del juego.
+    Se encarga de lanzar ataques y mostrar resultados.
+    """
     def __init__(self):
         self.obj_tablero = Tablero()
         self.atacado = []
 
     def lanzar_ataque(self, x, y):
+        """
+        Lanza un ataque a la posición (x, y)
+        """
         print(f"Atacando a  {x}, {y} ")
         atack = (x ,y)
         if atack not in self.atacado:
@@ -18,6 +24,9 @@ class Juego:
             print(f"[LOG] Ya atacaste esta casilla")
 
     def mostrar_resultado(self, resultado):
+        """
+        Muestra por pantalla el resultado del ataque
+        """
         if resultado == 0:
             print("Awa")
         elif resultado == 1:

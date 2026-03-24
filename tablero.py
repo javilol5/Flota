@@ -1,6 +1,10 @@
 from nave import Nave
 from casilla import Casilla
 class Tablero:
+    """
+    Representa el tablero de juego (matriz de casillas).
+    Se encarga de colocar las naves y gestionar impactos.
+    """
 
     def __init__(self, tamano = 10):
         self.tamano = tamano
@@ -28,7 +32,9 @@ class Tablero:
         ]
         '''
 
-
+        """
+        2 maneras de hacer self.casillero
+        """
         self.casillero = [
             [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
             [Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla(), Casilla()],
@@ -69,6 +75,10 @@ class Tablero:
         self.casillero[9][5].nave = sub4
 
     def comprobar_impacto(self, x, y):
+        """
+        Comprueba el impacto en la casilla (x, y)
+        delegando en la propia casilla.
+        """
         print(f"[LOG] comprobando impacto ({x}, {y})")
 
         casilla = self.casillero[x][y]
