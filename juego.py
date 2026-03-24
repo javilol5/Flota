@@ -44,6 +44,8 @@ if __name__ == "__main__":
     print()
     juego.lanzar_ataque(1, 5)
     print()
+    juego.lanzar_ataque(1, 5)
+    print()
     juego.lanzar_ataque(0, 4)
     print()
     juego.lanzar_ataque(7, 6)
